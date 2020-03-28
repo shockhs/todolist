@@ -1,4 +1,4 @@
 <h3> TODOLIST app</h3> <br>
 
-/server - API (node.js)
-/client - React js APP
+<i>/server</i> - API (node.js)<br>
+<i>/client</i> - React js APP
