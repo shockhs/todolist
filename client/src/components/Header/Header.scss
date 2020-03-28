@@ -1,0 +1,99 @@
+.navbar {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  a {
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    color: #2196f3;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-size: 24px;
+    overflow: hidden;
+    transition: 0.2s;
+  }
+  a:hover {
+    color: #255784;
+    background: #2196f3;
+    box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+  }
+  a span {
+    position: absolute;
+    display: block;
+  }
+  a span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #2196f3);
+    animation: changewidthFirst 1s infinite;
+    animation-delay: 0.25s;
+  }
+  @keyframes changewidthFirst {
+    from {
+      left: -100%;
+    }
+    to {
+      left: 100%;
+    }
+  }
+  a span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(270deg, transparent, #2196f3);
+    animation: changewidthThree 1s infinite;
+    animation-delay: 0.75s;
+  }
+  @keyframes changewidthThree {
+    from {
+      right: -100%;
+    }
+    to {
+      right: 100%;
+    }
+  }
+  a span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #2196f3);
+    animation: changewidth 1s infinite;
+    animation-delay: 0.5s;
+  }
+  @keyframes changewidth {
+    from {
+      top: -100%;
+    }
+    to {
+      top: 100%;
+    }
+  }
+  a span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #2196f3);
+    animation: changewidthFour 1s infinite;
+    animation-delay: 1s;
+  }
+  @keyframes changewidthFour {
+    from {
+      bottom: -100%;
+    }
+    to {
+      bottom: 100%;
+    }
+  }
+
+  ul {
+    display: flex;
+  }
+}

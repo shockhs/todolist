@@ -1,0 +1,169 @@
+.navbar {
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar a {
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  color: #2196f3;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-decoration: none;
+  font-size: 24px;
+  overflow: hidden;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.navbar a:hover {
+  color: #255784;
+  background: #2196f3;
+  -webkit-box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+          box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+}
+
+.navbar a span {
+  position: absolute;
+  display: block;
+}
+
+.navbar a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: -webkit-gradient(linear, left top, right top, from(transparent), to(#2196f3));
+  background: linear-gradient(90deg, transparent, #2196f3);
+  -webkit-animation: changewidthFirst 1s infinite;
+          animation: changewidthFirst 1s infinite;
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s;
+}
+
+@-webkit-keyframes changewidthFirst {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes changewidthFirst {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+.navbar a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  height: 2px;
+  width: 100%;
+  background: -webkit-gradient(linear, right top, left top, from(transparent), to(#2196f3));
+  background: linear-gradient(270deg, transparent, #2196f3);
+  -webkit-animation: changewidthThree 1s infinite;
+          animation: changewidthThree 1s infinite;
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s;
+}
+
+@-webkit-keyframes changewidthThree {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 100%;
+  }
+}
+
+@keyframes changewidthThree {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 100%;
+  }
+}
+
+.navbar a span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#2196f3));
+  background: linear-gradient(180deg, transparent, #2196f3);
+  -webkit-animation: changewidth 1s infinite;
+          animation: changewidth 1s infinite;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+@-webkit-keyframes changewidth {
+  from {
+    top: -100%;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+@keyframes changewidth {
+  from {
+    top: -100%;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+.navbar a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: -webkit-gradient(linear, left bottom, left top, from(transparent), to(#2196f3));
+  background: linear-gradient(360deg, transparent, #2196f3);
+  -webkit-animation: changewidthFour 1s infinite;
+          animation: changewidthFour 1s infinite;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+@-webkit-keyframes changewidthFour {
+  from {
+    bottom: -100%;
+  }
+  to {
+    bottom: 100%;
+  }
+}
+
+@keyframes changewidthFour {
+  from {
+    bottom: -100%;
+  }
+  to {
+    bottom: 100%;
+  }
+}
+
+.navbar ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=Header.css.map */

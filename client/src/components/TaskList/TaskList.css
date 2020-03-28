@@ -1,0 +1,161 @@
+.taskList {
+  grid-area: task;
+  padding-left: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.taskList-create {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.taskList-create-input {
+  height: 40px;
+  color: #ffffff;
+  border: none;
+  border: 1px solid #2196f3;
+  border-radius: 5px;
+  background-color: transparent;
+  width: 100%;
+}
+
+.taskList-create-input::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+.taskList-create-input:-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.taskList-create-input::-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.taskList-create-input::placeholder {
+  color: #ffffff;
+}
+
+.taskList-create a {
+  margin-top: 10px;
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  padding: 15px 30px;
+  color: #21f3d0;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-decoration: none;
+  font-size: 24px;
+  overflow: hidden;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.taskList-create a:hover {
+  color: #008cff;
+  background: #21f3d0;
+  -webkit-box-shadow: 0 0 10px #21f3d0, 0 0 40px #21f3d0, 0 0 80px #21f3d0;
+          box-shadow: 0 0 10px #21f3d0, 0 0 40px #21f3d0, 0 0 80px #21f3d0;
+  -webkit-transition-delay: 1s;
+          transition-delay: 1s;
+}
+
+.taskList-create a span {
+  position: absolute;
+  display: block;
+}
+
+.taskList-create a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: -webkit-gradient(linear, left top, right top, from(transparent), to(#21f3d0));
+  background: linear-gradient(90deg, transparent, #21f3d0);
+}
+
+.taskList-create a:hover span:nth-child(1) {
+  left: 100%;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.taskList-create a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: -webkit-gradient(linear, right top, left top, from(transparent), to(#21f3d0));
+  background: linear-gradient(270deg, transparent, #21f3d0);
+}
+
+.taskList-create a:hover span:nth-child(3) {
+  left: 100%;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
+}
+
+.taskList-create a span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#21f3d0));
+  background: linear-gradient(180deg, transparent, #21f3d0);
+}
+
+.taskList-create a:hover span:nth-child(2) {
+  top: 100%;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition-delay: 0.25s;
+          transition-delay: 0.25s;
+}
+
+.taskList-create a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: -webkit-gradient(linear, left bottom, left top, from(transparent), to(#21f3d0));
+  background: linear-gradient(360deg, transparent, #21f3d0);
+}
+
+.taskList-create a:hover span:nth-child(4) {
+  bottom: 100%;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition-delay: 0.75s;
+          transition-delay: 0.75s;
+}
+
+.taskList-item {
+  border: none;
+  background-color: #000000;
+  border: 1px solid #2196f3;
+  color: #21f3d0;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px 5px 10px 10px;
+  margin-bottom: 10px;
+}
+/*# sourceMappingURL=TaskList.css.map */
