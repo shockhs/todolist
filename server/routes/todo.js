@@ -17,7 +17,7 @@ router.post('/', verify, async (req, res) => {
 
     try {
         const savedTodo = await todo.save();
-        res.send({ todoId: savedTodo._id, title: savedTodo.title, date: savedTodo.date, authorId: savedTodo.authorId })
+        res.send({ _id: savedTodo._id, title: savedTodo.title, date: savedTodo.date, authorId: savedTodo.authorId })
     } catch (err) {
         res.status(400).send(err);
     }

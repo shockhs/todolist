@@ -14,6 +14,9 @@ const TaskList = ({ userToken, ...props }) => {
     const [errorStatus, setErrorStatus] = useState(false)
 
     useEffect(() => {
+        setIsCreating(false)
+        setIsDeleting(false)
+        setErrorStatus(false)
         TodoProvider.getTasks({ todoId, userToken }).then((res) => setTaskList(res))
     }, [todoId, userToken])
 
