@@ -1,11 +1,11 @@
 import { PUT_DATA, CALL_ERROR, CLEAR_DATA, CLEAR_ERROR } from '../actions'
 
 const initialState = {
-    id: localStorage.getItem('id'),
-    email: localStorage.getItem('email'),
-    name: localStorage.getItem('name'),
-    token: localStorage.getItem('token'),
-    authStatus: localStorage.getItem('authStatus'),
+    id: null,
+    email: null,
+    name: null,
+    token: null,
+    authStatus: null,
     errorMessage: '',
 }
 

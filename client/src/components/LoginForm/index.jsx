@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { loadData, clearErrorMessage } from '../../store/actions'
-import { getErrorMessage } from '../../store/selectors'
+import { getErrorMessage, getAuthStatus } from '../../store/selectors'
 import { useDispatch, connect } from 'react-redux'
-import Spinner from '../helpers/Spinner'
+import Spinner from '../Spinner'
 import { withRouter, Link } from 'react-router-dom'
 import './styles.scss'
+import InputField from '../InputField'
 
-const LoginForm = ({ errorMessage, clearErrorMessage, ...props }) => {
+const LoginForm = ({ errorMessage, authStatus, clearErrorMessage, history }) => {
     const [email, setEmail] = useState('')
     const [error, setError] = useState('')
     const [statusRequest, setStatusRequest] = useState(false)
@@ -25,6 +26,10 @@ const LoginForm = ({ errorMessage, clearErrorMessage, ...props }) => {
     }
 
     useEffect(() => {
+        if (authStatus) history.push('/')
+    }, [authStatus, history])
+
+    useEffect(() => {
         if (email && password) {
             setStatusRequest(false)
             setError(errorMessage)
@@ -35,16 +40,14 @@ const LoginForm = ({ errorMessage, clearErrorMessage, ...props }) => {
         <div className="loginForm">
             <form className="formJoin" autoComplete="off">
                 <h2>Login</h2>
-                <div className="input-field">
-                    <input required onChange={(event) => setEmail(event.target.value)} name="email" type="text" />
-                    <label>Please Enter Your Email</label>
-                    <span></span>
-                </div>
-                <div className="input-field">
-                    <input required onChange={(event) => setPassword(event.target.value)} name="password" type="password" />
-                    <label>Please Enter Your Password</label>
-                    <span></span>
-                </div>
+                <InputField label="Please Enter Your Email" handleChange={setEmail} value={email} name="email" type="text" />
+                <InputField
+                    label="Please Enter Your Password"
+                    handleChange={setPassword}
+                    value={password}
+                    name="password"
+                    type="password"
+                />
                 <span className="errorMessage">{error}</span>
                 <div className="formJoin-buttons">
                     {!statusRequest ? (
@@ -66,6 +69,7 @@ const LoginForm = ({ errorMessage, clearErrorMessage, ...props }) => {
 const mapStateToProps = (state) => {
     return {
         errorMessage: getErrorMessage(state),
+        authStatus: getAuthStatus(state),
     }
 }
 

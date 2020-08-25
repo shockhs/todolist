@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { Link, Route } from 'react-router-dom'
-
+import RouteGuard from '../RouteGuard'
+import { connect } from 'react-redux'
 import { getUserToken, getUserLogin } from '../../store/selectors'
 import { callExit } from '../../store/actions'
 import TodoProvider from '../../services/TodoProvider'
 import CreateField from './CreateField'
-import Spinner from '../helpers/Spinner'
+import Spinner from '../Spinner'
 import Header from '../Header/Header'
 import TaskList from '../TaskList'
 import './styles.scss'
-import { connect } from 'react-redux'
+import ListElements from './ListElements'
 
 const TodoList = ({ userToken, callExit, userLogin }) => {
     const [todoList, setTodoList] = useState(null)
@@ -48,27 +48,6 @@ const TodoList = ({ userToken, callExit, userLogin }) => {
         })
     }
 
-    const renderedList = () =>
-        todoList.map((item) => {
-            return (
-                <div key={item._id} className="todoList-elements">
-                    <Link to={`/todo=${item._id}`} className="todoList-elements-item">
-                        {item.title}
-                    </Link>
-                    {!isDeleting ? (
-                        <a
-                            className="todoList-elements-delete"
-                            href="/"
-                            disabled={isDeleting}
-                            onClick={(event) => handleDelete(event, item._id)}
-                        >
-                            Delete
-                        </a>
-                    ) : null}
-                </div>
-            )
-        })
-
     return (
         <div className="container">
             <Header callExit={callExit} />
@@ -76,7 +55,11 @@ const TodoList = ({ userToken, callExit, userLogin }) => {
                 <section id="todolist" className="todo">
                     <h2 style={{ textTransform: 'uppercase' }}>todo lists</h2>
                     <div className="listOfElements">
-                        {todoList !== null ? renderedList() : <Spinner className="emptySpinner" />}
+                        {todoList !== null ? (
+                            <ListElements todoList={todoList} handleDelete={handleDelete} isDeleting={isDeleting} />
+                        ) : (
+                            <Spinner className="emptySpinner" />
+                        )}
                         <CreateField handleCreate={handleCreate} isCreating={isCreating} />
                     </div>
                     {errorStatus ? (
@@ -86,7 +69,9 @@ const TodoList = ({ userToken, callExit, userLogin }) => {
                     ) : null}
                 </section>
                 <section className="todolistElements">
-                    <Route exact path="/todo=:todoId" render={() => <TaskList userToken={userToken} />} />
+                    <RouteGuard path="/todo=:todoId" exact>
+                        <TaskList userToken={userToken} />
+                    </RouteGuard>
                 </section>
             </div>
         </div>

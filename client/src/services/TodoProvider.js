@@ -21,67 +21,42 @@ class TodoProvider {
     }
 
     getTodos = async ({ userToken, userLogin }) => {
-        try {
-            return await fetch(
-                `${this.apiURL}/userLogin=${userLogin}`,
-                this.getOptions({ method: 'GET', userToken })
-            ).then((res) => res.json())
-        } catch (e) {
-            throw new Error(e)
-        }
+        return await fetch(`${this.apiURL}/userLogin=${userLogin}`, this.getOptions({ method: 'GET', userToken })).then((res) =>
+            res.json()
+        )
     }
 
     getTasks = async ({ todoId, userToken }) => {
-        try {
-            return await fetch(`${this.apiURL}/task=${todoId}`, this.getOptions({ method: 'GET', userToken })).then((res) =>
-                res.json()
-            )
-        } catch (e) {
-            throw new Error(e)
-        }
+        return await fetch(`${this.apiURL}/task=${todoId}`, this.getOptions({ method: 'GET', userToken })).then((res) =>
+            res.json()
+        )
     }
 
     createTodo = async ({ userToken, userLogin, todoTitle }) => {
-        try {
-            return await fetch(
-                this.apiURL,
-                this.getOptions({ method: 'POST', userToken, body: { userLogin, title: todoTitle } })
-            ).then((res) => res.json())
-        } catch (e) {
-            throw new Error(e)
-        }
+        return await fetch(
+            this.apiURL,
+            this.getOptions({ method: 'POST', userToken, body: { userLogin, title: todoTitle } })
+        ).then((res) => res.json())
     }
 
     createTask = async ({ userToken, todoId, task }) => {
-        try {
-            return await fetch(
-                `${this.apiURL}/task`,
-                this.getOptions({ method: 'POST', userToken, body: { task, todoId } })
-            ).then((res) => res.json())
-        } catch (e) {
-            throw new Error(e)
-        }
+        return await fetch(
+            `${this.apiURL}/task`,
+            this.getOptions({ method: 'POST', userToken, body: { task, todoId } })
+        ).then((res) => res.json())
     }
 
     deleteTodo = async ({ userToken, todoId }) => {
-        try {
-            return await fetch(this.apiURL, this.getOptions({ method: 'DELETE', userToken, body: { todoId } })).then(
-                (res) => res.status === 200
-            )
-        } catch (e) {
-            throw new Error(e)
-        }
+        return await fetch(this.apiURL, this.getOptions({ method: 'DELETE', userToken, body: { todoId } })).then(
+            (res) => res.status === 200
+        )
     }
 
     deleteTask = async ({ userToken, todoId, taskId }) => {
-        try {
-            return await fetch(
-                `${this.apiURL}/task`,
-                this.getOptions({ method: 'DELETE', userToken, body: { todoId, taskId } })
-            ).then((res) => res.status === 200)
-        } catch (e) {
-            throw new Error(e)
-        }
+        return await fetch(
+            `${this.apiURL}/task`,
+            this.getOptions({ method: 'DELETE', userToken, body: { todoId, taskId } })
+        ).then((res) => res.status === 200)
     }
 }
 

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import TodoProvider from '../../services/TodoProvider'
 import CreateField from './CreateField'
-import Spinner from '../helpers/Spinner'
+import Spinner from '../Spinner'
+import ListElements from './ListElements'
 import './styles.scss'
 
 const TaskList = ({ userToken, ...props }) => {
@@ -43,29 +44,16 @@ const TaskList = ({ userToken, ...props }) => {
         })
     }
 
-    const renderedList = () =>
-        taskList.map((item) => {
-            return (
-                <div key={item._id} className="taskList-item">
-                    <div className="taskList-item-task">{item.task}</div>
-                    {!isDeleting ? (
-                        <Link
-                            to="/"
-                            className="todoList-elements-delete"
-                            disabled={isDeleting}
-                            onClick={(event) => handleDelete(event, item._id)}
-                        >
-                            Delete
-                        </Link>
-                    ) : null}
-                </div>
-            )
-        })
-
     return (
         <div className="taskList">
             <h2>Tasks in the selected list</h2>
-            <div className="taskList-elements">{taskList !== null ? renderedList() : <Spinner className="emptySpinner" />}</div>
+            <div className="taskList-elements">
+                {taskList !== null ? (
+                    <ListElements handleDelete={handleDelete} isDeleting={isDeleting} taskList={taskList} />
+                ) : (
+                    <Spinner className="emptySpinner" />
+                )}
+            </div>
             <CreateField handleCreate={handleCreate} isCreating={isCreating} />
             {errorStatus ? (
                 <div className="errorField">
