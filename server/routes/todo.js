@@ -35,7 +35,7 @@ router.post('/task', verify, async (req, res) => {
 
     try {
         const savedTask = await task.save();
-        res.send({ taskId: savedTask._id, todoId: savedTask.todoId, task: savedTask.task, date: savedTask.date })
+        res.send({ _id: savedTask._id, todoId: savedTask.todoId, task: savedTask.task, date: savedTask.date })
     } catch (err) {
         res.status(400).send(err);
     }

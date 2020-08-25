@@ -1,0 +1,104 @@
+.taskList {
+  grid-area: task;
+  padding-left: 20px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  &-create {
+    display: flex;
+    flex-direction: column;
+    &-input {
+      height: 40px;
+      color: #ffffff;
+      border: none;
+      border: 1px solid #2196f3;
+      border-radius: 5px;
+      background-color: transparent;
+      width: 100%;
+    }
+    &-input::placeholder {
+      color: #ffffff;
+    }
+    a {
+      margin-top: 10px;
+      position: relative;
+      text-align: center;
+      display: inline-block;
+      padding: 15px 30px;
+      color: #21f3d0;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      text-decoration: none;
+      font-size: 24px;
+      overflow: hidden;
+      transition: 0.2s;
+    }
+    a:hover {
+      color: #008cff;
+      background: #21f3d0;
+      box-shadow: 0 0 10px #21f3d0, 0 0 40px #21f3d0, 0 0 80px #21f3d0;
+    }
+    a span {
+      position: absolute;
+      display: block;
+    }
+    a span:nth-child(1) {
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #21f3d0);
+    }
+    a:hover span:nth-child(1) {
+      left: 100%;
+      transition: 1s;
+    }
+    a span:nth-child(3) {
+      bottom: 0;
+      right: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(270deg, transparent, #21f3d0);
+    }
+    a:hover span:nth-child(3) {
+      left: 100%;
+      transition: 1s;
+      transition-delay: 0.5s;
+    }
+    a span:nth-child(2) {
+      top: -100%;
+      right: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent, #21f3d0);
+    }
+    a:hover span:nth-child(2) {
+      top: 100%;
+      transition: 1s;
+      transition-delay: 0.25s;
+    }
+    a span:nth-child(4) {
+      bottom: -100%;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(360deg, transparent, #21f3d0);
+    }
+    a:hover span:nth-child(4) {
+      bottom: 100%;
+      transition: 1s;
+      transition-delay: 0.75s;
+    }
+  }
+  &-item {
+    border: none;
+    background-color: #000000;
+    border: 1px solid #2196f3;
+    color: #21f3d0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 5px 10px 10px;
+    margin-bottom: 10px;
+  }
+}
