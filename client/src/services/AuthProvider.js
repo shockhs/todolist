@@ -19,8 +19,8 @@ class AuthProvider {
         return options
     }
 
-    registerUser = async ({ name, email, password }) => {
-        return await fetch(`${this.apiURL}/register`, this.getOptions({ method: 'POST', body: { name, email, password } }))
+    registerUser = ({ name, email, password }) => {
+        return fetch(`${this.apiURL}/register`, this.getOptions({ method: 'POST', body: { name, email, password } }))
             .then((res) => res.json())
             .then((res) => {
                 if (res.error) {

@@ -10,8 +10,9 @@ import Header from '../Header/Header'
 import TaskList from '../TaskList'
 import './styles.scss'
 import ListElements from './ListElements'
+import { withRouter } from 'react-router-dom'
 
-const TodoList = ({ userToken, callExit, userLogin }) => {
+const TodoList = ({ userToken, callExit, userLogin, history }) => {
     const [todoList, setTodoList] = useState(null)
     const [isCreating, setIsCreating] = useState(false)
     const [isDeleting, setIsDeleting] = useState(false)
@@ -24,14 +25,19 @@ const TodoList = ({ userToken, callExit, userLogin }) => {
     const handleCreate = (todoTitle) => {
         setErrorStatus(false)
         setIsCreating(true)
-        TodoProvider.createTodo({ userToken, userLogin, todoTitle }).then((res) => {
-            if (res.errors) {
-                setErrorStatus(true)
-            } else {
-                setTodoList((prevList) => [...prevList, res])
-            }
+        if (todoTitle.trim().length) {
+            TodoProvider.createTodo({ userToken, userLogin, todoTitle }).then((res) => {
+                if (res.errors) {
+                    setErrorStatus(true)
+                } else {
+                    setTodoList((prevList) => [...prevList, res])
+                }
+                setIsCreating(false)
+            })
+        } else {
+            setErrorStatus(true)
             setIsCreating(false)
-        })
+        }
     }
 
     const handleDelete = (event, id) => {
@@ -41,6 +47,7 @@ const TodoList = ({ userToken, callExit, userLogin }) => {
         TodoProvider.deleteTodo({ userToken, userLogin, todoId: id }).then((res) => {
             if (res) {
                 setTodoList((prevList) => [...prevList.filter((item) => item._id !== id)])
+                history.push('/')
             } else {
                 setErrorStatus(true)
             }
@@ -85,4 +92,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { callExit })(TodoList)
+export default connect(mapStateToProps, { callExit })(withRouter(TodoList))

@@ -23,14 +23,19 @@ const TaskList = ({ userToken, ...props }) => {
     const handleCreate = (task) => {
         setErrorStatus(false)
         setIsCreating(true)
-        TodoProvider.createTask({ todoId, userToken, task }).then((res) => {
-            if (res.errors) {
-                setErrorStatus(true)
-            } else {
-                setTaskList((prevList) => [...prevList, res])
-            }
+        if (task.trim().length) {
+            TodoProvider.createTask({ todoId, userToken, task }).then((res) => {
+                if (res.errors) {
+                    setErrorStatus(true)
+                } else {
+                    setTaskList((prevList) => [...prevList, res])
+                }
+                setIsCreating(false)
+            })
+        } else {
+            setErrorStatus(true)
             setIsCreating(false)
-        })
+        }
     }
 
     const handleDelete = (event, taskId) => {
