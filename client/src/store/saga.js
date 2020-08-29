@@ -1,8 +1,8 @@
 import { apiURL } from '../constants'
 import { takeEvery, put, call } from 'redux-saga/effects'
-import { LOAD_DATA, putData, callError } from './actions'
+import { LOGIN, saveAuth, callError } from './actions'
 
-function fetchData({ data }) {
+function loginFetch({ data }) {
     let { email, password } = data
     const options = {
         method: 'POST',
@@ -17,9 +17,9 @@ function fetchData({ data }) {
 
 function* workerLoadData(data) {
     try {
-        const res = yield call(fetchData, data)
+        const res = yield call(loginFetch, data)
         if (res.resultCode === 0) {
-            yield put(putData(res))
+            yield put(saveAuth(res))
         } else {
             yield put(callError(res.error))
         }
@@ -29,5 +29,5 @@ function* workerLoadData(data) {
 }
 
 export function* watchLoadData() {
-    yield takeEvery(LOAD_DATA, workerLoadData)
+    yield takeEvery(LOGIN, workerLoadData)
 }

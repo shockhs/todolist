@@ -1,4 +1,4 @@
-import { PUT_DATA, CALL_ERROR, CLEAR_DATA, CLEAR_ERROR } from '../actions'
+import { SAVE_AUTH, CALL_ERROR, CLEAR_DATA, CLEAR_ERROR } from '../actions'
 
 const initialState = {
     id: null,
@@ -21,7 +21,7 @@ const reducer = (state = initialState, action) => {
                 errorMessage: '',
             }
         }
-        case PUT_DATA:
+        case SAVE_AUTH:
             let { id, email, name, token } = action.data
             return {
                 id,

@@ -27,6 +27,8 @@
         "css-loader": "3.4.2",
         "dotenv": "8.2.0",
         "dotenv-expand": "5.1.0",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.3",
         "eslint": "^6.6.0",
         "eslint-config-airbnb": "^18.2.0",
         "eslint-config-prettier": "^6.11.0",
@@ -40,11 +42,14 @@
         "eslint-plugin-react-hooks": "^1.6.1",
         "file-loader": "4.3.0",
         "html-webpack-plugin": "4.0.0-beta.11",
+        "identity-obj-proxy": "^3.0.0",
+        "jest": "^26.4.2",
         "mini-css-extract-plugin": "0.9.0",
         "node-sass": "^4.14.1",
         "optimize-css-assets-webpack-plugin": "5.0.3",
         "prettier": "^2.1.0",
         "redux-logger": "^3.0.6",
+        "redux-mock-store": "^1.5.4",
         "sass-loader": "8.0.2",
         "style-loader": "0.23.1",
         "terser-webpack-plugin": "2.3.5",
@@ -54,9 +59,19 @@
         "webpack-dev-server": "3.10.3"
     },
     "scripts": {
+        "test": "jest",
         "dev": "cross-env NODE_ENV=development webpack --mode development",
         "build": "cross-env NODE_ENV=production webpack --mode production",
         "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open"
+    },
+    "jest": {
+        "setupFilesAfterEnv": [
+            "<rootDir>/setupTests.js"
+        ],
+        "moduleNameMapper": {
+            "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "identity-obj-proxy",
+            "\\.(css|scss)$": "identity-obj-proxy"
+        }
     },
     "browserslist": {
         "production": [

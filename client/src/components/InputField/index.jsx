@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const InputField = ({ handleChange, name, label, type, value }) => (
     <div className="input-field">
-        <input required onChange={(event) => handleChange(event.target.value)} value={value} name={name} type={type} />
+        <input required onChange={(event) => handleChange(event.target.value)} value={value} name={name} type={type} id={name} />
         <label htmlFor={name}>{label}</label>
         <span></span>
     </div>

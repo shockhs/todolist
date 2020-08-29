@@ -1,12 +1,12 @@
-export const PUT_DATA = 'profile/PUT_DATA'
+export const SAVE_AUTH = 'profile/SAVE_AUTH'
 export const CALL_ERROR = 'profile/CALL_ERROR'
-export const LOAD_DATA = 'profile/LOAD_DATA'
+export const LOGIN = 'profile/LOGIN'
 export const CLEAR_DATA = 'profile/CLEAR_DATA'
 export const CLEAR_ERROR = 'profile/CLEAR_ERROR'
 
-export const putData = (userData) => {
+export const saveAuth = (userData) => {
     return {
-        type: PUT_DATA,
+        type: SAVE_AUTH,
         data: userData,
     }
 }
@@ -30,9 +30,9 @@ export const clearErrorMessage = () => {
     }
 }
 
-export const loadData = (body) => {
+export const login = (body) => {
     return {
-        type: LOAD_DATA,
+        type: LOGIN,
         data: body,
     }
 }

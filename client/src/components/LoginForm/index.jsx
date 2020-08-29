@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { loadData, clearErrorMessage } from '../../store/actions'
+import { login, clearErrorMessage } from '../../store/actions'
 import { getErrorMessage, getAuthStatus } from '../../store/selectors'
-import { useDispatch, connect } from 'react-redux'
+import { connect } from 'react-redux'
 import Spinner from '../Spinner'
 import { withRouter, Link } from 'react-router-dom'
 import './styles.scss'
 import InputField from '../InputField'
 
-const LoginForm = ({ errorMessage, authStatus, clearErrorMessage, history }) => {
+export const LoginForm = ({ errorMessage, authStatus, clearErrorMessage, history, login }) => {
     const [email, setEmail] = useState('')
     const [error, setError] = useState('')
     const [statusRequest, setStatusRequest] = useState(false)
     const [password, setPassword] = useState('')
 
-    const dispatch = useDispatch()
     const handleSubmit = (event) => {
         event.preventDefault()
         clearErrorMessage()
@@ -21,7 +20,7 @@ const LoginForm = ({ errorMessage, authStatus, clearErrorMessage, history }) => 
             setError('Поля должны быть заполнены')
         } else {
             setStatusRequest(true)
-            dispatch(loadData({ email, password }))
+            login({ email, password })
         }
     }
 
@@ -73,4 +72,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { clearErrorMessage })(withRouter(LoginForm))
+export default connect(mapStateToProps, { clearErrorMessage, login })(withRouter(LoginForm))

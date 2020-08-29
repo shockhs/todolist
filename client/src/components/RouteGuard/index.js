@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { getAuthStatus } from '../../store/selectors'
 import PropTypes from 'prop-types'
 
-const RouteGuard = ({ path, exact, children, authStatus }) => {
+export const RouteGuard = ({ path, exact, children, authStatus }) => {
     return authStatus ? (
         <Route path={path} exact={exact}>
             {children}
