@@ -8,7 +8,7 @@ describe('RouteGuard', () => {
         const component = shallow(<RouteGuard path="/home" authStatus={false} />)
         expect(component.find(Redirect)).toHaveLength(1)
     })
-    it('should return children if authenticated', () => {
+    it('should return route if authenticated', () => {
         const component = shallow(<RouteGuard path="/home" authStatus={true} />)
         expect(component.find(Route)).toHaveLength(1)
     })
