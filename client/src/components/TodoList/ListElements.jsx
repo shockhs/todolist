@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ListElements = ({ todoList, isDeleting, handleDelete }) => {
     return todoList.map((item) => {

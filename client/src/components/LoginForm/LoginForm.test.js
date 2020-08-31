@@ -1,10 +1,12 @@
+import { mount } from 'enzyme'
+import React from 'react'
 import { LoginForm, mapStateToProps } from './index'
 
-import { MemoryRouter } from 'react-router-dom'
-import React from 'react'
-import { mount } from 'enzyme'
-
 jest.mock('../Spinner', () => jest.fn(() => 'spinner'))
+jest.mock('react-router-dom', () => ({
+    Link: () => 'Link',
+    withRouter: () => jest.fn((_) => _),
+}))
 
 describe('LoginForm', () => {
     describe('connect', () => {
@@ -29,11 +31,7 @@ describe('LoginForm', () => {
         let wrapper
 
         beforeEach(() => {
-            wrapper = mount(
-                <MemoryRouter>
-                    <LoginForm login={login} clearErrorMessage={clearErrorMessage} />
-                </MemoryRouter>
-            )
+            wrapper = mount(<LoginForm login={login} clearErrorMessage={clearErrorMessage} />)
         })
 
         it('disable button after submitting form', () => {

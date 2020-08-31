@@ -1,14 +1,12 @@
-import './styles.scss'
-
-import { Link, withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+import { Link, withRouter } from 'react-router-dom'
 import { clearErrorMessage, login } from '../../store/actions'
 import { getAuthStatus, getErrorMessage } from '../../store/selectors'
-
 import InputField from '../InputField'
-import PropTypes from 'prop-types'
 import Spinner from '../Spinner'
-import { connect } from 'react-redux'
+import './styles.scss'
 
 export const LoginForm = ({ errorMessage, authStatus, clearErrorMessage, history, login }) => {
     const [email, setEmail] = useState('')
@@ -54,9 +52,9 @@ export const LoginForm = ({ errorMessage, authStatus, clearErrorMessage, history
                 <div className="formJoin-buttons">
                     {!statusRequest ? (
                         <>
-                            <Link to="/" onClick={handleSubmit} id="loginBtn">
+                            <button onClick={handleSubmit} id="loginBtn">
                                 Log in
-                            </Link>
+                            </button>
                             <Link to="/register">Register</Link>
                         </>
                     ) : (

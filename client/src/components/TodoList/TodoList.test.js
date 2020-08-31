@@ -1,6 +1,6 @@
+import { shallow } from 'enzyme'
 import React from 'react'
 import ListElements from './ListElements'
-import { shallow } from 'enzyme'
 
 const todoList = [
     { _id: '1111', title: 'T' },

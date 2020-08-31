@@ -1,9 +1,7 @@
-import './Header.scss'
-
-import { Link, withRouter } from 'react-router-dom'
-
 import PropTypes from 'prop-types'
 import React from 'react'
+import { Link, withRouter } from 'react-router-dom'
+import './Header.scss'
 
 const Header = ({ callExit }) => {
     const handleExit = () => {

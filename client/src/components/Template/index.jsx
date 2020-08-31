@@ -1,13 +1,12 @@
-import { Route, Switch } from 'react-router-dom'
-
-import LoginForm from '../LoginForm'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { connect } from 'react-redux'
+import { Route, Switch } from 'react-router-dom'
+import { getAuthStatus } from '../../store/selectors'
+import LoginForm from '../LoginForm'
 import RegisterForm from '../RegisterForm'
 import RouteGuard from '../RouteGuard'
 import TodoList from '../TodoList'
-import { connect } from 'react-redux'
-import { getAuthStatus } from '../../store/selectors'
 
 const Template = ({ authStatus, login }) => {
     return (

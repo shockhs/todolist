@@ -1,19 +1,17 @@
-import './styles.scss'
-
-import React, { useEffect, useState } from 'react'
-import { getUserLogin, getUserToken } from '../../store/selectors'
-
-import CreateField from './CreateField'
-import Header from '../Header/Header'
-import ListElements from './ListElements'
 import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import TodoProvider from '../../services/TodoProvider'
+import { callExit } from '../../store/actions'
+import { getUserLogin, getUserToken } from '../../store/selectors'
+import Header from '../Header/Header'
 import RouteGuard from '../RouteGuard'
 import Spinner from '../Spinner'
 import TaskList from '../TaskList'
-import TodoProvider from '../../services/TodoProvider'
-import { callExit } from '../../store/actions'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import CreateField from './CreateField'
+import ListElements from './ListElements'
+import './styles.scss'
 
 export const TodoList = ({ userToken, callExit, userLogin, history }) => {
     const [todoList, setTodoList] = useState(null)

@@ -13,9 +13,7 @@ export const saveAuth = (userData) => {
 export const callError = (error) => {
     return {
         type: CALL_ERROR,
-        data: {
-            error,
-        },
+        error,
     }
 }
 export const callExit = () => {

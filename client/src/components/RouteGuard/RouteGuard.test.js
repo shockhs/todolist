@@ -1,8 +1,7 @@
-import { Redirect, Route } from 'react-router-dom'
-
-import React from 'react'
-import { RouteGuard } from './index'
 import { shallow } from 'enzyme'
+import React from 'react'
+import { Redirect, Route } from 'react-router-dom'
+import { RouteGuard } from './index'
 
 describe('RouteGuard', () => {
     it('should return redirect if not authenticated', () => {

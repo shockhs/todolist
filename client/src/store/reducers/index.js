@@ -33,8 +33,7 @@ const reducer = (state = initialState, action) => {
         case CALL_ERROR:
             return {
                 ...state,
-                errorMessage: action.data.error,
-                authStatus: false,
+                errorMessage: action.error,
             }
         case CLEAR_ERROR: {
             return {

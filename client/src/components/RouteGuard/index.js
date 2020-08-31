@@ -1,8 +1,7 @@
-import { Redirect, Route } from 'react-router-dom'
-
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
+import { Redirect, Route } from 'react-router-dom'
 import { getAuthStatus } from '../../store/selectors'
 
 export const RouteGuard = ({ path, exact, children, authStatus }) => {
