@@ -1,6 +1,6 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import React from 'react'
 
 const ListElements = ({ todoList, isDeleting, handleDelete }) => {
     return todoList.map((item) => {
@@ -10,12 +10,7 @@ const ListElements = ({ todoList, isDeleting, handleDelete }) => {
                     {item.title}
                 </Link>
                 {!isDeleting ? (
-                    <a
-                        className="todoList-elements-delete"
-                        href="/"
-                        disabled={isDeleting}
-                        onClick={(event) => handleDelete(event, item._id)}
-                    >
+                    <a className="todoList-elements-delete" href="/" onClick={(event) => handleDelete(event, item._id)}>
                         Delete
                     </a>
                 ) : null}

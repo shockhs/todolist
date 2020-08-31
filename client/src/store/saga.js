@@ -1,6 +1,7 @@
+import { LOGIN, callError, saveAuth } from './actions'
+import { call, put, takeEvery } from 'redux-saga/effects'
+
 import { apiURL } from '../constants'
-import { takeEvery, put, call } from 'redux-saga/effects'
-import { LOGIN, saveAuth, callError } from './actions'
 
 function loginFetch({ data }) {
     let { email, password } = data

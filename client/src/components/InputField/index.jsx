@@ -1,5 +1,5 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 
 const InputField = ({ handleChange, name, label, type, value }) => (
     <div className="input-field">

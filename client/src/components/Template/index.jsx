@@ -1,9 +1,11 @@
-import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+
 import LoginForm from '../LoginForm'
-import TodoList from '../TodoList'
+import PropTypes from 'prop-types'
+import React from 'react'
 import RegisterForm from '../RegisterForm'
 import RouteGuard from '../RouteGuard'
+import TodoList from '../TodoList'
 import { connect } from 'react-redux'
 import { getAuthStatus } from '../../store/selectors'
 
@@ -17,6 +19,11 @@ const Template = ({ authStatus, login }) => {
             </RouteGuard>
         </Switch>
     )
+}
+
+LoginForm.propTypes = {
+    authStatus: PropTypes.bool,
+    login: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({

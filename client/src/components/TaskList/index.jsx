@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { withRouter } from 'react-router-dom'
-import TodoProvider from '../../services/TodoProvider'
-import CreateField from './CreateField'
-import Spinner from '../Spinner'
-import ListElements from './ListElements'
 import './styles.scss'
+
+import React, { useEffect, useState } from 'react'
+
+import CreateField from './CreateField'
+import ListElements from './ListElements'
+import Spinner from '../Spinner'
+import TodoProvider from '../../services/TodoProvider'
+import { withRouter } from 'react-router-dom'
 
 const TaskList = ({ userToken, ...props }) => {
     const todoId = props.match.params.todoId

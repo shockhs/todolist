@@ -1,4 +1,4 @@
-import { SAVE_AUTH, CALL_ERROR, CLEAR_DATA, CLEAR_ERROR } from '../actions'
+import { CALL_ERROR, CLEAR_DATA, CLEAR_ERROR, SAVE_AUTH } from '../actions'
 
 const initialState = {
     id: null,

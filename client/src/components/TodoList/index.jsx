@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import RouteGuard from '../RouteGuard'
-import { connect } from 'react-redux'
-import { getUserToken, getUserLogin } from '../../store/selectors'
-import { callExit } from '../../store/actions'
-import TodoProvider from '../../services/TodoProvider'
-import CreateField from './CreateField'
-import Spinner from '../Spinner'
-import Header from '../Header/Header'
-import TaskList from '../TaskList'
 import './styles.scss'
+
+import React, { useEffect, useState } from 'react'
+import { getUserLogin, getUserToken } from '../../store/selectors'
+
+import CreateField from './CreateField'
+import Header from '../Header/Header'
 import ListElements from './ListElements'
+import PropTypes from 'prop-types'
+import RouteGuard from '../RouteGuard'
+import Spinner from '../Spinner'
+import TaskList from '../TaskList'
+import TodoProvider from '../../services/TodoProvider'
+import { callExit } from '../../store/actions'
+import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-const TodoList = ({ userToken, callExit, userLogin, history }) => {
+export const TodoList = ({ userToken, callExit, userLogin, history }) => {
     const [todoList, setTodoList] = useState(null)
     const [isCreating, setIsCreating] = useState(false)
     const [isDeleting, setIsDeleting] = useState(false)
@@ -85,7 +88,14 @@ const TodoList = ({ userToken, callExit, userLogin, history }) => {
     )
 }
 
-const mapStateToProps = (state) => {
+TodoList.propTypes = {
+    userToken: PropTypes.string,
+    userLogin: PropTypes.string,
+    history: PropTypes.shape(),
+    callExit: PropTypes.func,
+}
+
+export const mapStateToProps = (state) => {
     return {
         userToken: getUserToken(state),
         userLogin: getUserLogin(state),

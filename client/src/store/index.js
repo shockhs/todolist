@@ -1,6 +1,7 @@
 import { applyMiddleware, createStore } from 'redux'
-import logger from 'redux-logger'
+
 import createSagaMiddleware from 'redux-saga'
+import logger from 'redux-logger'
 import reducer from './reducers'
 import { watchLoadData } from './saga'
 

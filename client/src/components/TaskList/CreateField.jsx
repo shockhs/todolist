@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import Spinner from '../Spinner'
+import React, { useEffect, useState } from 'react'
+
 import PropTypes from 'prop-types'
+import Spinner from '../Spinner'
 
 const CreateField = ({ isCreating, handleCreate }) => {
     const [task, setTask] = useState('')

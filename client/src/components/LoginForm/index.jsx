@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import { login, clearErrorMessage } from '../../store/actions'
-import { getErrorMessage, getAuthStatus } from '../../store/selectors'
-import { connect } from 'react-redux'
-import Spinner from '../Spinner'
-import { withRouter, Link } from 'react-router-dom'
 import './styles.scss'
+
+import { Link, withRouter } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { clearErrorMessage, login } from '../../store/actions'
+import { getAuthStatus, getErrorMessage } from '../../store/selectors'
+
 import InputField from '../InputField'
+import PropTypes from 'prop-types'
+import Spinner from '../Spinner'
+import { connect } from 'react-redux'
 
 export const LoginForm = ({ errorMessage, authStatus, clearErrorMessage, history, login }) => {
     const [email, setEmail] = useState('')
@@ -51,7 +54,7 @@ export const LoginForm = ({ errorMessage, authStatus, clearErrorMessage, history
                 <div className="formJoin-buttons">
                     {!statusRequest ? (
                         <>
-                            <Link to="/" onClick={handleSubmit}>
+                            <Link to="/" onClick={handleSubmit} id="loginBtn">
                                 Log in
                             </Link>
                             <Link to="/register">Register</Link>
@@ -65,7 +68,15 @@ export const LoginForm = ({ errorMessage, authStatus, clearErrorMessage, history
     )
 }
 
-const mapStateToProps = (state) => {
+LoginForm.propTypes = {
+    errorMessage: PropTypes.string,
+    authStatus: PropTypes.bool,
+    history: PropTypes.shape(),
+    login: PropTypes.func,
+    clearErrorMessage: PropTypes.func,
+}
+
+export const mapStateToProps = (state) => {
     return {
         errorMessage: getErrorMessage(state),
         authStatus: getAuthStatus(state),

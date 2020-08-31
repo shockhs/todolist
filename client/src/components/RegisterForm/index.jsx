@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
-import { Link, withRouter } from 'react-router-dom'
-import Spinner from '../Spinner'
-import AuthProvider from '../../services/AuthProvider'
 import './styles.scss'
+
+import { Link, withRouter } from 'react-router-dom'
+import React, { useState } from 'react'
+
+import AuthProvider from '../../services/AuthProvider'
 import InputField from '../InputField'
+import Spinner from '../Spinner'
 
 const RegisterForm = () => {
     const [email, setEmail] = useState('')
